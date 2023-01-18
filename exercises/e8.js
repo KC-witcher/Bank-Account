@@ -1,15 +1,15 @@
-
 // EXERCISE 8
 // Return an array with a bank account object with the greatest balance value
 // Array example: bankAccounts in /data/data.js
 // getClientWithGreatestBalance(bankAccounts) => [{ name: 'SomeName', balance: 32, ... }]
+import { findMaxValueInArray } from "./e4";
 
 export function getClientWithGreatestBalance(array) {
-  // Your code goes here...
-
+  const balanceArray = array.map((account) => account.balance);
+  return array.filter(
+    (account) => account.balance === findMaxValueInArray(balanceArray)
+  );
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-8"

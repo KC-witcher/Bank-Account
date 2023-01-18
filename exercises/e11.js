@@ -4,8 +4,11 @@
 // getAllWithdrawals(bankAccounts) => [3432, 43242.34, 23432]
 
 export function getAllWithdrawals(array) {
-  // Your code goes here...
-
+  return array
+    .map((account) => (account.withdrawals ? account.withdrawals : 0))
+    .map((singleAccount) =>
+      singleAccount === 0 ? 0 : singleAccount.reduce((acc, curr) => acc + curr)
+    );
 }
 
 // === TEST YOURSELF ===
