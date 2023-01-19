@@ -5,10 +5,15 @@
 import { findMaxValueInArray } from "./e4";
 
 export function getClientWithGreatestBalance(array) {
-  const balanceArray = array.map((account) => account.balance);
-  return array.filter(
-    (account) => account.balance === findMaxValueInArray(balanceArray)
-  );
+  let maxBalanceAccount = [];
+  let maxBalance = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].balance > maxBalance) {
+      maxBalance = array[i].balance;
+      maxBalanceAccount = [array[i]];
+    }
+  }
+  return maxBalanceAccount;
 }
 
 // === TEST YOURSELF ===

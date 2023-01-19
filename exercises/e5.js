@@ -3,8 +3,13 @@
 // Array example: bankAccounts in /data/data.js
 // getAllClientNames(bankAccounts) => ['Kevin', 'Spenser']
 import { bankAccounts } from "../data/data";
+
 export function getAllClientNames(array) {
-  return array.map((account) => account.name);
+  const name = [];
+  for (let i = 0; i < array.length; i++) {
+    name.push(array[i].name);
+  }
+  return name;
 }
 
 // === TEST YOURSELF ===

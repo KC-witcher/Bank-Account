@@ -4,10 +4,21 @@
 // getAllDepositsGreaterThanOneHundred(bankAccounts) => [3432, 43242.34, 23432]
 
 export function getAllDepositsGreaterThanOneHundred(array) {
-  return array
-    .map((account) => (account.deposits ? account.deposits : 0))
-    .flat()
-    .filter((amount) => amount > 100);
+  const returnArray = [];
+  const depositsArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].deposits) {
+      depositsArray.push(array[i].deposits);
+    }
+  }
+  for (let i = 0; i < depositsArray.length; i++) {
+    for (let j = 0; j < depositsArray[i].length; j++) {
+      if (depositsArray[i][j] > 100) {
+        returnArray.push(depositsArray[i][j]);
+      }
+    }
+  }
+  return returnArray;
 }
 
 // === TEST YOURSELF ===

@@ -4,18 +4,28 @@
 // separateNamesWithAFromRest(["jon", "alice", "andrew", "mark", "jimmy"]) -> [["alice", "andrew", "mark"], ["jon", "jimmy"]]
 
 export function separateNamesWithAFromRest(array) {
-  let arrayWithA = [];
-  let arrayWithoutA = [];
+  const namesWithA = [];
+  const namesWithOutA = [];
+  let returnArray = new Array(2);
+  returnArray[0] = new Array(namesWithA.length);
+  returnArray[1] = new Array(namesWithOutA.length);
 
   for (let i = 0; i < array.length; i++) {
     if (array[i].includes("a")) {
-      arrayWithA.push(array[i]);
+      namesWithA.push(array[i]);
     } else {
-      arrayWithoutA.push(array[i]);
+      namesWithOutA.push(array[i]);
     }
   }
 
-  return [arrayWithA, arrayWithoutA];
+  for (let i = 0; i < namesWithA.length; i++) {
+    returnArray[0].push(namesWithA[i]);
+  }
+  for (let i = 0; i < namesWithOutA.length; i++) {
+    returnArray[1].push(namesWithOutA[i]);
+  }
+
+  return returnArray;
 }
 
 // === TEST YOURSELF ===

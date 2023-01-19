@@ -4,12 +4,23 @@
 // getAllAccountsWithSumsOfDepositsLess2000(bankAccounts) => [3432, 43242.34, 23432]
 
 export function getAllAccountsWithSumsOfDepositsLess2000(array) {
-  return array.filter(
-    (account) =>
-      (account.deposits
-        ? account.deposits.reduce((acc, curr) => acc + curr)
-        : 0) < 2000
-  );
+  const resultArray = [];
+  let sumOfDeposits = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].deposits === undefined) {
+      resultArray.push(array[i]);
+    } else {
+      sumOfDeposits = 0;
+      for (let j = 0; j < array[i].deposits.length; j++) {
+        sumOfDeposits += array[i].deposits[j];
+      }
+
+      if (sumOfDeposits < 2000) {
+        resultArray.push(array[i]);
+      }
+    }
+  }
+  return resultArray;
 }
 
 // === TEST YOURSELF ===

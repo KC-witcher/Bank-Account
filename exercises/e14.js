@@ -5,16 +5,29 @@
 // getClientsWithWrongBalance(bankAccounts) => [{ name: 'Name1', balance: 32, ... }, { name: 'Name2', balance: 3523, ... }]
 
 export function getClientsWithWrongBalance(array) {
-  return array.filter(
-    (account) =>
-      account.balance !=
-      (account.deposits
-        ? account.deposits.reduce((acc, curr) => acc + curr)
-        : 0) -
-        (account.withdrawals
-          ? account.withdrawals.reduce((acc, curr) => acc + curr)
-          : 0)
-  );
+  const resultArray = [];
+  for (let i = 0; i < array.length; i++) {
+    let deposits = 0;
+    let withdrawals = 0;
+    if (!array[i].deposits) {
+      deposits = 0;
+    } else {
+      for (let j = 0; j < array[i].deposits.length; j++) {
+        deposits += array[i].deposits[j];
+      }
+    }
+    if (!array[i].withdrawals) {
+      withdrawals = 0;
+    } else {
+      for (let j = 0; j < array[i].withdrawals.length; j++) {
+        withdrawals += array[i].withdrawals[j];
+      }
+    }
+    if (deposits - withdrawals != array[i].balance) {
+      resultArray.push(array[i]);
+    }
+  }
+  return resultArray;
 }
 
 // === TEST YOURSELF ===

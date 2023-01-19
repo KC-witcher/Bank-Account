@@ -4,11 +4,27 @@
 // getAllWithdrawals(bankAccounts) => [3432, 43242.34, 23432]
 
 export function getAllWithdrawals(array) {
-  return array
-    .map((account) => (account.withdrawals ? account.withdrawals : 0))
-    .map((singleAccount) =>
-      singleAccount === 0 ? 0 : singleAccount.reduce((acc, curr) => acc + curr)
-    );
+  const returnArray = [];
+  const withdrawalArray = [];
+
+  let sumOfWithdrawals = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].withdrawals) {
+      withdrawalArray.push(array[i].withdrawals);
+    } else {
+      withdrawalArray.push([0]);
+    }
+  }
+
+  for (let i = 0; i < withdrawalArray.length; i++) {
+    sumOfWithdrawals = 0;
+    for (let j = 0; j < withdrawalArray[i].length; j++) {
+      sumOfWithdrawals += withdrawalArray[i][j];
+    }
+    returnArray.push(sumOfWithdrawals);
+  }
+
+  return returnArray;
 }
 
 // === TEST YOURSELF ===

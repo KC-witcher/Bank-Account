@@ -6,12 +6,14 @@
 
 export function flatArrays(array) {
   const resultArray = [];
-  array.map((singleArray) =>
-    singleArray.map((element) => resultArray.push(element))
-  );
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].length; j++) {
+      resultArray.push(array[i][j]);
+    }
+  }
+
   return resultArray;
 }
-
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-16"
 // If the test has all tests passed, switch to the next exercise file
