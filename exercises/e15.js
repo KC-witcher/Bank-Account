@@ -4,11 +4,14 @@
 // NOTE: You can NOT use the array.concat() method in your code
 
 export function concatArrays(arr1, arr2) {
-  for (let i = 0; i < arr2.length; i++) {
-    arr1.push(arr2[i]);
+  const returnArray = [];
+  for (let i = 0; i < arr1.length; i++) {
+    returnArray.push(arr1[i]);
   }
-
-  return [...arr1, ...arr2];
+  for (let j = 0; j < arr2.length; j++) {
+    returnArray.push(arr2[j]);
+  }
+  return returnArray;
 }
 
 // === TEST YOURSELF ===
